@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./home.css">
+</head>
+
+<body>
+    <div class="content">
+        <form action="/delete" method="post">
+            <table>
+                <caption>Danh sách các môn học</caption>
+    
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên môn học</th>
+                        <th>Loại môn học</th>
+                        <th>Học kỳ</th>
+                        <th>Khóa</th>
+                        <th>Chọn</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <% courses.forEach(item=> { %>
+    
+                        <tr>
+                            <td>
+                                <%= item.id %>
+                            </td>
+                            <td>
+                                <%= item.name %>
+                            </td>
+                            <td>
+                                <%= item.course_type %>
+                            </td>
+                            <td>
+                                <%= item.semester %>
+                            </td>
+                            <td>
+                                <%= item.department %>
+                            </td>
+                            <td><input name="<%= item.id %>" type="checkbox">
+                            </td>
+                        </tr>
+    
+                        <% }); %>
+                        <button type="submit">Xóa chọn</button>
+                </tbody>
+            </table>
+        </form>
+        <!-- Form -->
+        <form action="/save" method="post">
+            <input type="text" name="id" placeholder="Nhập id..">
+            <br>
+            <input type="text" name="name" placeholder="Nhập name.."><br>
+            <input type="text" name="course_type" placeholder="Nhập course_type"><br>
+            <input type="text" name="semester" placeholder="Nhập semester.."><br>
+            <input type="text" name="department" placeholder="Nhập department..">
+            <input type="file" name="file">
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

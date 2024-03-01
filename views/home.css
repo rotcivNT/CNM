@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+caption {
+    padding: 4px;
+    margin: auto;
+    font-size: 24px;
+    font-weight: 700;
+    color: red;
+    background-color: gray;
+    width: fit-content;
+}
+
+th, td {
+    border: 1px solod #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: rgb(84, 247, 84);
+}
