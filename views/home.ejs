@@ -10,60 +10,46 @@
 
 <body>
     <div class="content">
-        <form action="/delete" method="post">
-            <table>
-                <caption>Danh sách các môn học</caption>
-    
-                <thead>
+        <div>
+            <h4>Products:</h4>
+            <form action="/save" method="post" enctype="multipart/form-data">
+                <input type="text" name="MaSanPham" id="MaSanPham" placeholder="Ma San Pham"> <br>
+                <input type="text" name="TenSanPham" id="TenSanPham" placeholder="Ten San Pham"> <br>
+                <input type="text" name="SoLuong" id="SoLuong" placeholder="So Luong"> <br>
+                <input type="file" name="image" id="image" accept="image/png, image/jpeg"> <br>
+                <input type="submit" value="Add"> <br>
+            </form>
+        </div>
+        <form action="/delete" method="post" enctype="multipart/form-data">
+            <table border="true">
+                <tr>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Hình ảnh</th>
+                    <th>Chọn</th>
+                </tr>
+                <% for (let i=0; i< data.length; i++){ %>
                     <tr>
-                        <th>STT</th>
-                        <th>Tên môn học</th>
-                        <th>Loại môn học</th>
-                        <th>Học kỳ</th>
-                        <th>Khóa</th>
-                        <th>Chọn</th>
+                        <td>
+                            <%= data[i].MaSanPham %>
+                        </td>
+                        <td>
+                            <%= data[i].TenSanPham %>
+                        </td>
+                        <td>
+                            <%= data[i].SoLuong %>
+                        </td>
+                        <td>
+                            <img src="<%= data[i].HinhAnh %>" alt="avt_<%= data[i].maSanPham %>" width="48"
+                                height="48" /></td>
+                        <td>
+                            <input type="checkbox" name="<%= data[i].MaSanPham %>" id="<%= data[i].MaSanPham %>" />
+                        </td>
                     </tr>
-                </thead>
-    
-                <tbody>
-                    <% courses.forEach(item=> { %>
-    
-                        <tr>
-                            <td>
-                                <%= item.id %>
-                            </td>
-                            <td>
-                                <%= item.name %>
-                            </td>
-                            <td>
-                                <%= item.course_type %>
-                            </td>
-                            <td>
-                                <%= item.semester %>
-                            </td>
-                            <td>
-                                <%= item.department %>
-                            </td>
-                            <td><input name="<%= item.id %>" type="checkbox">
-                            </td>
-                        </tr>
-    
-                        <% }); %>
-                        <button type="submit">Xóa chọn</button>
-                </tbody>
+                    <% } %>
+                        <input type="submit" value="Xoá">
             </table>
-        </form>
-        <!-- Form -->
-        <form action="/save" method="post">
-            <input type="text" name="id" placeholder="Nhập id..">
-            <br>
-            <input type="text" name="name" placeholder="Nhập name.."><br>
-            <input type="text" name="course_type" placeholder="Nhập course_type"><br>
-            <input type="text" name="semester" placeholder="Nhập semester.."><br>
-            <input type="text" name="department" placeholder="Nhập department..">
-            <input type="file" name="file">
-            <br>
-            <button type="submit">Submit</button>
         </form>
     </div>
 </body>
